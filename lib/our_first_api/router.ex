@@ -1,0 +1,21 @@
+defmodule OurFirstApi.Router do
+  use Plug.Router
+
+  plug(Plug.Logger)
+
+  plug(:match)
+
+  plug(Plug.Parsers,
+    parsers: [:json],
+    pass: ["application/json"],
+    json_decorder: Jason)
+
+
+  plug(:dispatch)
+
+  get "/", do: send_resp(con,200, "ok")
+
+  match _, do send_resp(conn, 404, "Not Found")
+
+
+end
