@@ -8,14 +8,15 @@ defmodule OurFirstApi.Router do
   plug(Plug.Parsers,
     parsers: [:json],
     pass: ["application/json"],
-    json_decorder: Jason)
+    json_decoder: Jason)
 
 
   plug(:dispatch)
 
-  get "/", do: send_resp(con,200, "ok")
+  get "/", do: send_resp(conn,200, "OK")
+  get "/names", do: send_resp(conn,300, " KGOTSO SIPHO CHRIX")
 
-  match _, do send_resp(conn, 404, "Not Found")
+  match _, do: send_resp(conn, 404, "Not Found")
 
 
 end

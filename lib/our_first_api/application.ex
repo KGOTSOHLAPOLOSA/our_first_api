@@ -8,6 +8,7 @@ defmodule OurFirstApi.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {Plug.Cowboy, scheme: :http, plug: OurFirstApi.Router, options: [port: 8080]}
       # Starts a worker by calling: OurFirstApi.Worker.start_link(arg)
       # {OurFirstApi.Worker, arg}
     ]
